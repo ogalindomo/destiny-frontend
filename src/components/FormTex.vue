@@ -9,13 +9,17 @@
         <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
       </b-row>    
       <b-row>
-        <h2>Input</h2>
+        <b-col class="text-center">
+          <h2>Input</h2>
+        </b-col>
       </b-row>
       <b-row>
         <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula" cols="30" rows="3"></textarea>
       </b-row>
       <b-row>
-        <h2>Result</h2>
+        <b-col class="text-center">
+          <h2>Result</h2>
+        </b-col>
       </b-row>
       <b-row>
         <div style="height: 200px;">
@@ -52,7 +56,7 @@ export default {
     },
     calculateCols(){
       this.cols = parseInt(screen.width/56);
-      alert(this.cols);
+      //alert(this.cols);
       document.getElementById("input").cols = String(Math.max(parseInt(screen.width/56),20));
     },
     calculateFontSize(){
@@ -72,7 +76,6 @@ export default {
       cols:0,
     }
   },
-
 }
 </script>
 
@@ -84,6 +87,7 @@ export default {
 div{
   margin-left:15%;
   margin-right:15%;
+  border: 1px solid red;
 }
 .form-area{
   outline: 3px solid black;
@@ -94,5 +98,8 @@ textarea{
 }
 h1,h2 {
   font-weight: normal;
+}
+.text-center{
+  text-align: center;
 }
 </style>
