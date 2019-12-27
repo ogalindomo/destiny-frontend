@@ -1,12 +1,22 @@
 <template>
 <div class="form-area">
-      <b-row>
-        <b-col style="text-align: right;">Sample:</b-col>
-        <b-col style="text-align: left;">Miners ID:</b-col>
+      <image-uploader
+        :preview="true"
+        :className="['fileinput', { 'fileinput--loaded': hasImage }]"
+        capture="environment"
+        :debug="1"
+        doNotResize="gif"
+        :autoRotate="true"
+        outputFormat="verbose"
+        @input="setImage"
+      ></image-uploader>
+      <b-row class="justify-content-md-center">
+        <b-col cols="2" md="auto" style="text-align: left; font-size:1.75em;">Sample:  </b-col>
+        <b-col cols="2" md="auto" style="text-align: right; font-size:1.75em;">Miners ID:</b-col>
       </b-row>
-      <b-row>
-        <b-col><textarea v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
-        <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
+      <b-row >
+        <b-col cols="2" md="auto" style="text-align: left;" ><textarea v-model="ID" style="resize: none;" cols ="13" rows="1"></textarea></b-col>
+        <b-col cols="2" md="auto" style="text-align: right;" ><textarea v-model="MinersID" style="resize: none;" cols ="13" rows="1" disabled></textarea></b-col>
       </b-row>    
       <b-row>
         <h2>Input</h2>
@@ -36,6 +46,10 @@ export default {
     let latexScript = document.createElement('script');
     latexScript.setAttribute('src', "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML");
     document.head.appendChild(latexScript);
+    ////////////////////////////////////////////////////
+    let uploaderScript = document.createElement('script');
+    uploaderScript.setAttribute('src', "https://unpkg.com/vue-image-upload-resize");
+    document.head.appendChild(uploaderScript);
     ////////////////////////////////////////////////////
     this.display();
     this.calculateCols();
@@ -78,6 +92,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.col1{
+  background-color: red;
+}
+.col2{
+  background-color: yellow;
+}
 .input-area{
   font-size: var(--size);
 }
