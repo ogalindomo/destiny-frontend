@@ -72,7 +72,6 @@ export default {
     ////////////////////////////////////////////////////
     this.display();
     this.calculateCols();
-    alert("Here: "+this.cols);
     document.documentElement.style.setProperty('--size', this.calculateFontSize()+'em');
     document.documentElement.style.setProperty('--fontSize', this.calculateFontSize()+'em');
     // let variable = getComputedStyle(document.documentElement).getPropertyValue('--size');
@@ -81,16 +80,13 @@ export default {
     display(){
       var s = screen.height;
       var w = screen.width;
-      alert(s+"x"+w)
     },
     calculateCols(){
       this.cols = parseInt(screen.width/56);
-      alert(this.cols);
       document.getElementById("input").cols = String(Math.max(parseInt(screen.width/56),20));
     },
     calculateFontSize(){
       var calc = Math.max(((screen.width/1680)*2), 0.75);
-      alert("Calc: "+calc);
       return calc;
     }
   },
