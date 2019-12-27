@@ -1,11 +1,11 @@
 <template>
 <div class="form-area">
       <b-row>
-        <b-col style="text-align: right;">Sample:</b-col>
-        <b-col style="text-align: left;">Miners ID:</b-col>
+        <b-col class="text-center">Sample:</b-col>
+        <b-col class="text-center">Miners ID:</b-col>
       </b-row>
       <b-row>
-        <b-col><textarea v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
+        <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
         <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
       </b-row>    
       <b-row>
@@ -14,7 +14,9 @@
         </b-col>
       </b-row>
       <b-row>
-        <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula" cols="30" rows="3"></textarea>
+        <b-col class="text-center">
+          <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
+        </b-col>
       </b-row>
       <b-row>
         <b-col class="text-center">
@@ -22,9 +24,11 @@
         </b-col>
       </b-row>
       <b-row>
-        <div style="height: 200px;">
-          <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
-        </div>
+        <b-col class="text-center">
+          <div style="height: 200px;">
+            <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
+          </div>
+        </b-col>
       </b-row>
   </div>
 </template>
@@ -43,16 +47,16 @@ export default {
     ////////////////////////////////////////////////////
     this.display();
     this.calculateCols();
-    alert("Here: "+this.cols);
+    //alert("Here: "+this.cols);
     document.documentElement.style.setProperty('--size', this.calculateFontSize()+'em');
     document.documentElement.style.setProperty('--fontSize', this.calculateFontSize()+'em');
     // let variable = getComputedStyle(document.documentElement).getPropertyValue('--size');
   },
   methods:{
     display(){
-      var s = screen.height;
-      var w = screen.width;
-      alert(s+"x"+w)
+      //var s = screen.height;
+      //var w = screen.width;
+      //alert(s+"x"+w)
     },
     calculateCols(){
       this.cols = parseInt(screen.width/56);
@@ -61,7 +65,7 @@ export default {
     },
     calculateFontSize(){
       var calc = Math.max(((screen.width/1680)*2), 0.75);
-      alert("Calc: "+calc);
+      //alert("Calc: "+calc);
       return calc;
     }
   },
@@ -85,8 +89,8 @@ export default {
   font-size: var(--size);
 }
 div{
-  margin-left:15%;
-  margin-right:15%;
+  margin-left:5%;
+  margin-right:5%;
   border: 1px solid red;
 }
 .form-area{
@@ -95,11 +99,22 @@ div{
 textarea{
   font-size: 1em;
   text-align:left;
+  border: 1px solid blue;
 }
 h1,h2 {
   font-weight: normal;
 }
 .text-center{
   text-align: center;
+}
+
+/*TODO: Delete when done. For testing only*/
+.col{
+  border: 2px solid green;
+  width: 90%;
+}
+.id-overflow{
+  white-space: nowrap;
+  overflow: hidden;
 }
 </style>
