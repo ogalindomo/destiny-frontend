@@ -5,16 +5,18 @@
           <b-row>
             <b-col class="text-center">
               <picture-input 
+                style="margin-top: 2%;"
                 ref="pictureInput" 
                 @change="onChange" 
                 width="300" 
                 height="300" 
+                :autoToggleAspectRatio="true" 
                 margin="8" 
                 accept="image/jpeg,image/png" 
                 size="10" 
                 buttonClass="btn"
                 hideChangeButton="true"
-                crop="true"
+                crop="false"
                 :customStrings="{
                   upload: '<h1>Bummer!</h1>',
                   drag: 'Import an image'
@@ -60,20 +62,22 @@
     </div>
 
     <div class="form-area d-none d-sm-block">
-      <div class="photo-area" style="margin-top: 1%;">
+      <div class="photo-area">
           <b-row>
             <b-col class="text-center">
               <picture-input 
+                style="margin-top: 2%;"
                 ref="pictureInput" 
                 @change="onChange" 
                 width="300" 
                 height="300" 
+                :autoToggleAspectRatio="true" 
                 margin="8" 
                 accept="image/jpeg,image/png" 
                 size="10" 
                 buttonClass="btn"
                 hideChangeButton="true"
-                crop="true"
+                crop="false"
                 :customStrings="{
                   upload: '<h1>Bummer!</h1>',
                   drag: 'Import an image'
@@ -158,7 +162,7 @@ export default {
       ID: null,
       MinersID:'ogalindomo',
       cols:0,
-      hasImage: false
+      hasImage: false,
     }
   },
 }
@@ -172,7 +176,7 @@ export default {
   height: 100%;
   width: 100%;
   margin:0;
-  /* border: 1px solid orange; */
+  border: 1px solid orange;
 }
 .input-area{
   font-size: var(--size);
