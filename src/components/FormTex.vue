@@ -1,35 +1,74 @@
 <template>
-<div class="form-area">
+  <div class="main-menu">
+    <div class="d-sm-none">
       <b-row>
-        <b-col class="text-center">Sample:</b-col>
-        <b-col class="text-center">Miners ID:</b-col>
+        <b-col>Sample:</b-col>
       </b-row>
       <b-row>
         <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
+      </b-row>
+      <b-row>
+        <b-col>Miners ID:</b-col>
+      </b-row>
+      <b-row>
         <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
-      </b-row>    
-      <b-row>
-        <b-col class="text-center">
-          <h2>Input</h2>
-        </b-col>
       </b-row>
       <b-row>
-        <b-col class="text-center">
-          <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col class="text-center">
-          <h2>Result</h2>
-        </b-col>
-      </b-row>
-      <b-row>
-        <b-col class="text-center">
-          <div style="height: 200px;">
-            <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
-          </div>
-        </b-col>
-      </b-row>
+          <b-col class="text-center">
+            <h2>Input</h2>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <h2>Result</h2>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <div style="height: 200px;">
+              <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
+            </div>
+          </b-col>
+        </b-row>
+    </div>
+
+    <div class="form-area d-none d-sm-block">
+        <b-row>
+          <b-col class="text-center">Sample:</b-col>
+          <b-col class="text-center">Miners ID:</b-col>
+        </b-row>
+        <b-row>
+          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
+          <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
+        </b-row>    
+        <b-row>
+          <b-col class="text-center">
+            <h2>Input</h2>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <h2>Result</h2>
+          </b-col>
+        </b-row>
+        <b-row>
+          <b-col class="text-center">
+            <div style="height: 200px;">
+              <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
+            </div>
+          </b-col>
+        </b-row>
+    </div>
   </div>
 </template>
 
@@ -85,6 +124,12 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+.main-menu{
+  height: 100%;
+  width: 100%;
+  margin:0;
+  border: 1px solid orange;
+}
 .input-area{
   font-size: var(--size);
 }
@@ -120,4 +165,20 @@ h1,h2 {
 #input{
   width: 90%;
 }
+/*
+.med_screen_html{
+  display: none;
+}
+@media only screen and (max-width: 600px) {
+  .med_screen_html{
+    border: 5px solid yellow;
+    display: inline-block;
+  }
+  .form-area{
+    display: none;
+  }
+}
+*/
+
+
 </style>
