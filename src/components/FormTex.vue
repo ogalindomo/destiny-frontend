@@ -117,4 +117,7 @@ h1,h2 {
   white-space: nowrap;
   overflow: hidden;
 }
+#input{
+  width: 90%;
+}
 </style>
