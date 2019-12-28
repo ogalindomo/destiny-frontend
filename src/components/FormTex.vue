@@ -1,15 +1,15 @@
 <template>
   <div class="main-menu">
     <div>
-      <b-row>
-        <div class="head-foot-space"></div>
+      <b-row class="d-sm-none">
+        <div class="head-space-small"></div>
+      </b-row>
+      <b-row class="d-none d-sm-block">
+        <div class="head-foot-large"></div>
       </b-row>
     </div>
     <div class="d-sm-none small-form-area">
-      <div class="inner-form-area-large">
-        <b-row>
-          <div class="head-foot-space"></div>
-        </b-row>
+      <div class="inner-form-area">
         <b-row>
           <div class="row1-space-small"></div>
         </b-row>
@@ -69,7 +69,7 @@
     </div>
 
     <div class="form-area d-none d-sm-block">
-      <div class="inner-form-area-large">
+      <div class="inner-form-area">
         <b-row>
           <div class="row1-space-large"></div>
         </b-row>
@@ -122,8 +122,11 @@
       </div>
     </div>
     <div>
-      <b-row>
-        <div class="head-foot-space"></div>
+      <b-row class="d-sm-none">
+        <div class="foot-space-small"></div>
+      </b-row>
+      <b-row class="d-sm-none">
+        <div class="foot-space-small"></div>
       </b-row>
     </div>
   </div>
@@ -241,6 +244,7 @@ div{
     rgb(255, 209, 168) 10px
   );
   overflow-y: hidden;
+  
 }
 
 .form-area{
@@ -280,7 +284,7 @@ h1,h2 {
   background-color: white;
   width: 90%;
 }
-.inner-form-area-large{
+.inner-form-area{
   background-color: white;
   //border: 1px solid red;
 }
@@ -291,10 +295,10 @@ h1,h2 {
 #input{
   width: 90%;
 }
-.head-foot-space{
-  margin-top: 2%;
+.head-space-small{
+  margin-top: 5%;
 }
-.head-foot-space, .small-form-area{
+.head-space-large{
   margin-top: 2%;
 }
 .row1-space-large{
@@ -307,6 +311,12 @@ h1,h2 {
 .line-divider{
   margin-top: 1px;
   border: 1px solid rgb(240, 139, 62);
+}
+.foot-space-small{
+  margin-top: 3%;
+}
+.foot-space-large{
+  margin-bottom: 2%;
 }
 
 .row1-space-small{
