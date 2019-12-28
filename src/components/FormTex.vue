@@ -117,14 +117,45 @@ export default {
     'vue-mathjax': VueMathjax,
   },
   mounted() {
+  
+    // Function expression that resizes the input div height based on the amount of text.
+    var inputExpand = function(element){
+      // Takes height of parent. Downsizes if text is deleted.
+      element.style.height = "inherit";
+      
+      // Retrieves object with all css properities of the element.
+      var elementProperties = window.getComputedStyle(element);
+      
+      // Calculates new height based on current border, padding, and scroll height.
+      var borderHeight = parseInt(elementProperties.getPropertyValue('border-top-width'), 10) 
+          + parseInt(elementProperties.getPropertyValue('border-bottom-width'), 10);
+          
+      var paddingHeight = parseInt(elementProperties.getPropertyValue('padding-top'), 10)
+          + parseInt(elementProperties.getPropertyValue('padding-bottom'), 10)
+          
+      var height = borderHeight + element.scrollHeight + paddingHeight;
+      
+      // Sets new height
+      element.style.height = height + "px";
+    };
+  
     ///////////////Make LaTex Engine Work///////////////
     let latexScript = document.createElement('script');
     latexScript.setAttribute('src', "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML");
     document.head.appendChild(latexScript);
     ////////////////////////////////////////////////////
+    
     this.display();
     this.calculateCols();
     //alert("Here: "+this.cols);
+    
+    document.addEventListener("input", function(event){
+      if(event.target.id.toLowerCase() != "input"){
+        return;
+      }
+      inputExpand(event.target);
+    }, false);
+    
     document.documentElement.style.setProperty('--size', this.calculateFontSize()+'em');
     document.documentElement.style.setProperty('--fontSize', this.calculateFontSize()+'em');
     // let variable = getComputedStyle(document.documentElement).getPropertyValue('--size');
@@ -144,8 +175,7 @@ export default {
       var calc = Math.max(((screen.width/1680)*2), 0.75);
       //alert("Calc: "+calc);
       return calc;
-    }
-    
+    },
   },
   name: 'FormTex',
   data () {
