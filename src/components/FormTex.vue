@@ -16,7 +16,7 @@
         <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
       </b-row>
       <b-row>
-        <div class="row2-space-small"></div>
+        <div class="row3-space-small"></div>
       </b-row>
       <b-row>
         <b-col>Miners ID:</b-col>
@@ -25,7 +25,13 @@
         <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
       </b-row>
       <b-row>
-        <div class="row1-space-small"></div>
+        <div class="row2-space-small"></div>
+      </b-row>
+      <b-row>
+        <b-col class="line-divider"></b-col>
+      </b-row>
+      <b-row>
+        <div class="row2-space-small"></div>
       </b-row>
       <b-row>
           <b-col class="text-center">
@@ -71,7 +77,13 @@
           <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
         </b-row>  
         <b-row>
-          <div class="row1-space-large"></div>
+          <div class="row2-space-large"></div>
+        </b-row>
+        <b-row>
+          <b-col class="line-divider"></b-col>
+        </b-row>
+        <b-row>
+          <div class="row2-space-large"></div>
         </b-row>
         <b-row>
           <b-col class="text-center">
@@ -229,6 +241,7 @@ div{
 textarea{
   font-size: 1em;
   text-align:left;
+  border-radius: 5px;
   //border: 1px solid blue;
 }
 h1,h2 {
@@ -259,10 +272,22 @@ h1,h2 {
 .row1-space-large{
   margin-top: 3%;
 }
+.row2-space-large{
+  margin-top: 2%;
+}
+
+.line-divider{
+  margin-top: 1px;
+  border: 1px solid rgb(240, 139, 62);
+}
+
 .row1-space-small{
   margin-top: 8%;
 }
 .row2-space-small{
+  margin-top: 4%;
+}
+.row3-space-small{
   margin-top: 2%;
 }
 </style>
