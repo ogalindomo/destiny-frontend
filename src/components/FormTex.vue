@@ -8,7 +8,7 @@
                 style="margin-top: 2%;"
                 ref="pictureInput" 
                 @change="onChange" 
-                width="300" 
+                width="720" 
                 height="300" 
                 :autoToggleAspectRatio="true" 
                 margin="8" 
@@ -69,7 +69,7 @@
                 style="margin-top: 2%;"
                 ref="pictureInput" 
                 @change="onChange" 
-                width="300" 
+                width="720" 
                 height="300" 
                 :autoToggleAspectRatio="true" 
                 margin="8" 
@@ -151,6 +151,15 @@ export default {
     calculateFontSize(){
       var calc = Math.max(((screen.width/1680)*2), 0.75);
       return calc;
+    },
+    onChange(img){
+      alert(typeof(img));
+      alert(img);
+      if (img != null){
+        img = img.substring(img.indexOf(",")+1);
+        alert(atob(img));
+        alert(typeof(atob(img)));
+      }
     }
   },
   name: 'FormTex',
