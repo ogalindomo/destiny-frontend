@@ -5,10 +5,10 @@
       <header></header>
       <div class="main-b">
         <div class="form-area d-none d-sm-block large-image-area">
-          <img alt="UTEP logo" height='156' width='200' src="./assets/UTEP.jpeg">
+          <img alt="UTEP logo" height='156' width='200' src="./assets/UTEP.png">
         </div>
         <div class="d-sm-none small-image-area">
-          <img alt="UTEP logo" height='117' width='150' src="./assets/UTEP.jpeg">
+          <img alt="UTEP logo" height='117' width='150' src="./assets/UTEP.png">
         </div>
         <div id="form-tex-area">
           <FormTex></FormTex>
@@ -51,13 +51,13 @@ export default {
 .small-image-area{
   padding-top: 20px;
   height: 150px;
-  background-color: white;
+  background-color: rgb(18, 41, 79);
 }
 
 .large-image-area{
   padding-top: 30px;
   height: 215px;
-  background-color: white;
+  background-color: rgb(18, 41, 79);
 }
 #form-tex-area{
    //border: 5px solid black;

@@ -161,15 +161,11 @@ export default {
       element.style.height = height + "px";
     };
   
-    ///////////////Make LaTex Engine Work///////////////
+    // Makes LaTex engine work 
     let latexScript = document.createElement('script');
     latexScript.setAttribute('src', "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML");
     document.head.appendChild(latexScript);
     ////////////////////////////////////////////////////
-    
-    this.display();
-    this.calculateCols();
-    //alert("Here: "+this.cols);
     
     document.addEventListener("input", function(event){
       if(event.target.id.toLowerCase() != "input"){
@@ -183,19 +179,12 @@ export default {
     // let variable = getComputedStyle(document.documentElement).getPropertyValue('--size');
   },
   methods:{
-    display(){
-      //var s = screen.height;
-      //var w = screen.width;
-      //alert(s+"x"+w)
-    },
     calculateCols(){
       this.cols = parseInt(screen.width/56);
-      //alert(this.cols);
       document.getElementById("input").cols = String(Math.max(parseInt(screen.width/56),20));
     },
     calculateFontSize(){
       var calc = Math.max(((screen.width/1680)*2), 0.75);
-      //alert("Calc: "+calc);
       return calc;
     },
   },
@@ -218,7 +207,7 @@ export default {
 .main-menu{
   width: 100%;
   margin:0;
-  //border: 1px solid orange;
+  /* border: 1px solid orange; */
   /*display: flex;
   flex-direction: column;
   justify-content: space-between;*/
