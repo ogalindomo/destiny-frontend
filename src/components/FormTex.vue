@@ -1,11 +1,22 @@
 <template>
   <div class="main-menu">
-    <div class="d-sm-none">
+    <div>
+      <b-row>
+        <div class="head-foot-space"></div>
+      </b-row>
+    </div>
+    <div class="d-sm-none small-form-area">
+      <b-row>
+        <div class="row1-space-small"></div>
+      </b-row>
       <b-row>
         <b-col>Sample:</b-col>
       </b-row>
       <b-row>
         <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
+      </b-row>
+      <b-row>
+        <div class="row2-space-small"></div>
       </b-row>
       <b-row>
         <b-col>Miners ID:</b-col>
@@ -14,6 +25,9 @@
         <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
       </b-row>
       <b-row>
+        <div class="row1-space-small"></div>
+      </b-row>
+      <b-row>
           <b-col class="text-center">
             <h2>Input</h2>
           </b-col>
@@ -24,28 +38,41 @@
           </b-col>
         </b-row>
         <b-row>
+          <div class="row1-space-small"></div>
+        </b-row>
+        <b-row>
           <b-col class="text-center">
             <h2>Result</h2>
           </b-col>
         </b-row>
         <b-row>
           <b-col class="text-center">
-            <div style="height: 200px;">
-              <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
+            <div class="result-display">
+              <vue-mathjax  style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
             </div>
           </b-col>
+        </b-row>
+        <b-row>
+          <div class="row1-space-small"></div>
         </b-row>
     </div>
 
     <div class="form-area d-none d-sm-block">
         <b-row>
+          <div class="row1-space-large"></div>
+        </b-row>
+        <b-row>
           <b-col class="text-center">Sample:</b-col>
           <b-col class="text-center">Miners ID:</b-col>
         </b-row>
+        
         <b-row>
           <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
           <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
-        </b-row>    
+        </b-row>  
+        <b-row>
+          <div class="row1-space-large"></div>
+        </b-row>
         <b-row>
           <b-col class="text-center">
             <h2>Input</h2>
@@ -57,17 +84,28 @@
           </b-col>
         </b-row>
         <b-row>
+          <div class="row1-space-large"></div>
+        </b-row>
+        <b-row>
           <b-col class="text-center">
             <h2>Result</h2>
           </b-col>
         </b-row>
         <b-row>
           <b-col class="text-center">
-            <div style="height: 200px;">
+            <div class="result-display">
               <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
             </div>
           </b-col>
         </b-row>
+        <b-row>
+          <div class="row1-space-large"></div>
+        </b-row>
+    </div>
+    <div>
+      <b-row>
+        <div class="head-foot-space"></div>
+      </b-row>
     </div>
   </div>
 </template>
@@ -107,6 +145,7 @@ export default {
       //alert("Calc: "+calc);
       return calc;
     }
+    
   },
   name: 'FormTex',
   data () {
@@ -125,10 +164,12 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
 .main-menu{
-  height: 100%;
   width: 100%;
   margin:0;
-  border: 1px solid orange;
+  //border: 1px solid orange;
+  /*display: flex;
+  flex-direction: column;
+  justify-content: space-between;*/
 }
 .input-area{
   font-size: var(--size);
@@ -136,15 +177,29 @@ export default {
 div{
   margin-left:5%;
   margin-right:5%;
-  border: 1px solid red;
+  //border: 1px solid red;
 }
+.small-form-area{
+  outline: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
+  overflow-y: hidden;
+}
+
 .form-area{
   outline: 3px solid black;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  background-color: white;
 }
+
 textarea{
   font-size: 1em;
   text-align:left;
-  border: 1px solid blue;
+  //border: 1px solid blue;
 }
 h1,h2 {
   font-weight: normal;
@@ -152,10 +207,13 @@ h1,h2 {
 .text-center{
   text-align: center;
 }
+.result-display{
+  overflow-x: auto;
+}
 
 /*TODO: Delete when done. For testing only*/
 .col{
-  border: 2px solid green;
+  //border: 2px solid green;
   width: 90%;
 }
 .id-overflow{
@@ -165,20 +223,16 @@ h1,h2 {
 #input{
   width: 90%;
 }
-/*
-.med_screen_html{
-  display: none;
+.head-foot-space{
+  margin-top: 2%;
 }
-@media only screen and (max-width: 600px) {
-  .med_screen_html{
-    border: 5px solid yellow;
-    display: inline-block;
-  }
-  .form-area{
-    display: none;
-  }
+.row1-space-large{
+  margin-top: 3%;
 }
-*/
-
-
+.row1-space-small{
+  margin-top: 8%;
+}
+.row2-space-small{
+  margin-top: 2%;
+}
 </style>
