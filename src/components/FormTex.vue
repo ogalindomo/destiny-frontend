@@ -206,6 +206,7 @@ export default {
 <style scoped>
 .main-menu{
   width: 100%;
+  height: 100%;
   margin:0;
   /* border: 1px solid orange; */
   /*display: flex;
@@ -218,7 +219,7 @@ export default {
 div{
   margin-left:5%;
   margin-right:5%;
-  //border: 1px solid red;
+  /* border: 10px solid red; */
 }
 .small-form-area{
   outline: 3px solid black;

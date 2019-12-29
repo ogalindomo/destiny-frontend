@@ -43,8 +43,6 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 99.9vh;
-  /*margin-top: 60px;*/
-  //border: 5px solid pink;
   background-color: rgb(240, 139, 62);
 }
 
@@ -60,14 +58,15 @@ export default {
   background-color: rgb(18, 41, 79);
 }
 #form-tex-area{
-   //border: 5px solid black;
+   /* border: 5px solid black; */
    min-height: 70vh;
    display: flex;
    flex-direction: column;
    justify-content: center;
    overflow-y: hidden;
-   background: linear-gradient(rgb(19,52,98) 10%, rgb(12,36,73) 40%, rgb(224,229,233) 30%, rgb(203, 208, 212) 65%);
-   //background-color: rgb(21, 37, 89);
+   background: linear-gradient(rgb(18,41,79), rgb(203, 208, 212) 65%);
+   /* //background-color: rgb(21, 37, 89); */
+   
 }
 .banana{
     min-height: 100%;
