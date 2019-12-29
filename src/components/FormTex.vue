@@ -5,11 +5,38 @@
         <div class="head-space-small"></div>
       </b-row>
       <b-row class="d-none d-sm-block">
-        <div class="head-foot-large"></div>
+        <div class="head-space-large"></div>
       </b-row>
     </div>
+    
     <div class="d-sm-none small-form-area">
       <div class="inner-form-area">
+        <b-row>
+          <div class="row1-space-small"></div>
+        </b-row>
+        <b-row>
+          <b-col class="text-center"> 
+              <picture-input 
+                style="border: 2px solid black; width: 100%"
+                ref="pictureInput" 
+                @change="onChange" 
+                width="400" 
+                height="400" 
+                :autoToggleAspectRatio="true" 
+                margin="0"
+                accept="image/jpeg,image/png" 
+                size="10" 
+                buttonClass="btn"
+                :hideChangeButton="true"
+                :crop="false"
+                :customStrings="{
+                  upload: '<h1>Bummer!</h1>',
+                  drag: 'Import an image',
+                  tap: 'Tap to upload an image'
+                }">
+            </picture-input>
+          </b-col>
+        </b-row>
         <b-row>
           <div class="row1-space-small"></div>
         </b-row>
@@ -74,10 +101,35 @@
           <div class="row1-space-large"></div>
         </b-row>
         <b-row>
+          <b-col class="text-center"> 
+              <picture-input 
+                  style="margin-top: 2%; margin-bottom:2%;"
+                  ref="pictureInput" 
+                  @change="onChange" 
+                  width="720" 
+                  height="300" 
+                  :autoToggleAspectRatio="true" 
+                  margin="8" 
+                  accept="image/jpeg,image/png" 
+                  size="10" 
+                  buttonClass="btn"
+                  :hideChangeButton="true"
+                  :crop="false"
+                  :customStrings="{
+                    upload: '<h1>Bummer!</h1>',
+                    drag: 'Import an image',
+                    tap: 'Tap to upload an image'
+                  }">
+              </picture-input>
+          </b-col>
+        </b-row>
+        <b-row>
+          <div class="row1-space-large"></div>
+        </b-row>
+        <b-row>
           <b-col class="text-center">Sample:</b-col>
           <b-col class="text-center">Miners ID:</b-col>
         </b-row>
-        
         <b-row>
           <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
           <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
@@ -98,7 +150,7 @@
         </b-row>
         <b-row>
           <b-col class="text-center">
-            <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
+            <textarea id="input" style="resize: none; text-align:center; " class="input-area;" v-model="formula"></textarea>
           </b-col>
         </b-row>
         <b-row>
@@ -123,10 +175,10 @@
     </div>
     <div>
       <b-row class="d-sm-none">
-        <div class="foot-space-small"></div>
+        <div class="foot-space"></div>
       </b-row>
-      <b-row class="d-sm-none">
-        <div class="foot-space-small"></div>
+      <b-row class="d-none d-sm-block">
+        <div class="foot-space"></div>
       </b-row>
     </div>
   </div>
@@ -134,9 +186,11 @@
 
 <script>
 import { VueMathjax } from 'vue-mathjax'
+import PictureInput from 'vue-picture-input'
 export default {
   components: {
     'vue-mathjax': VueMathjax,
+    PictureInput
   },
   mounted() {
   
@@ -166,7 +220,6 @@ export default {
     latexScript.setAttribute('src', "https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-AMS_HTML");
     document.head.appendChild(latexScript);
     ////////////////////////////////////////////////////
-    
     document.addEventListener("input", function(event){
       if(event.target.id.toLowerCase() != "input"){
         return;
@@ -187,6 +240,15 @@ export default {
       var calc = Math.max(((screen.width/1680)*2), 0.75);
       return calc;
     },
+    onChange(img){
+      alert(typeof(img));
+      alert(img);
+      if (img != null){
+        img = img.substring(img.indexOf(",")+1);
+        alert(atob(img));
+        alert(typeof(atob(img)));
+      }
+    }
   },
   name: 'FormTex',
   data () {
@@ -197,6 +259,7 @@ export default {
       ID: null,
       MinersID:'ogalindomo',
       cols:0,
+      hasImage: false,
     }
   },
 }
@@ -204,6 +267,7 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
+
 .main-menu{
   width: 100%;
   height: 100%;
@@ -219,6 +283,7 @@ export default {
 div{
   margin-left:5%;
   margin-right:5%;
+  /* border: 1px solid white; */
   /* border: 10px solid red; */
 }
 .small-form-area{
@@ -236,7 +301,6 @@ div{
   overflow-y: hidden;
   
 }
-
 .form-area{
   outline: 3px solid rgb(12,36,73);
   display: flex;
@@ -250,7 +314,6 @@ div{
     rgb(255, 209, 168) 20px
   );
 }
-
 textarea{
   font-size: 1em;
   text-align:left;
@@ -267,7 +330,6 @@ h1,h2 {
   white-space: nowrap;
   overflow-x: auto;
 }
-
 /*TODO: Delete when done. For testing only*/
 .col{
   //border: 2px solid green;
@@ -297,19 +359,15 @@ h1,h2 {
 .row2-space-large{
   margin-top: 2%;
 }
-
 .line-divider{
   margin-top: 1px;
   border: 1px solid rgb(240, 139, 62);
 }
-.foot-space-small{
+.foot-space{
   margin-top: 3%;
 }
-.foot-space-large{
-  margin-bottom: 2%;
-}
-
 .row1-space-small{
+  border: 1px solid red;
   margin-top: 8%;
 }
 .row2-space-small{
