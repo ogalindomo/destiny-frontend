@@ -42,7 +42,7 @@
           <b-col>Sample:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
+          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row3-space-small"></div>
@@ -51,7 +51,7 @@
           <b-col>Miners ID:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row2-space-small"></div>
@@ -69,7 +69,7 @@
         </b-row>
         <b-row>
           <b-col class="text-center">
-            <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
+            <textarea id="input" style="resize: none; text-align:center; font-size: var(--size);" v-model="formula"></textarea>
           </b-col>
         </b-row>
         <b-row>
@@ -86,6 +86,9 @@
               <vue-mathjax  style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
             </div>
           </b-col>
+        </b-row>
+        <b-row>
+          <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="test">Submit</b-button></b-col>
         </b-row>
         <b-row>
           <div class="row1-space-small"></div>
@@ -125,8 +128,8 @@
         </b-row>
         
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
+          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
         </b-row>  
         <b-row>
           <div class="row2-space-large"></div>
@@ -144,7 +147,7 @@
         </b-row>
         <b-row>
           <b-col class="text-center">
-            <textarea id="input" style="resize: none; text-align:center; " class="input-area;" v-model="formula"></textarea>
+            <textarea id="input" style="resize: none; text-align:center; font-size: var(--size)" class="input-area;" v-model="formula"></textarea>
           </b-col>
         </b-row>
         <b-row>
@@ -158,9 +161,12 @@
         <b-row>
           <b-col class="text-center">
             <div class="result-display">
-              <vue-mathjax style="font-size: var(--fontSize)" :formula="formula"></vue-mathjax>
+              <vue-mathjax style="font-size: var(--fontSize);" :formula="formula"></vue-mathjax>
             </div>
           </b-col>
+        </b-row>
+        <b-row>
+          <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="test">Submit</b-button></b-col>
         </b-row>
         <b-row>
           <div class="row1-space-large"></div>
@@ -222,6 +228,7 @@ export default {
     }, false);
     
     document.documentElement.style.setProperty('--size', this.calculateFontSize()+'em');
+    alert(this.calculateFontSize());
     document.documentElement.style.setProperty('--fontSize', this.calculateFontSize()+'em');
     // let variable = getComputedStyle(document.documentElement).getPropertyValue('--size');
   },
@@ -242,6 +249,9 @@ export default {
         alert(atob(img));
         alert(typeof(atob(img)));
       }
+    },
+    test(){
+      this.onChange(null);
     }
   },
   name: 'FormTex',
@@ -263,6 +273,15 @@ export default {
 <style scoped>
 .photo-area{
 }
+
+.btn-dark{
+  background-color: rgb(18,41,79);
+}
+
+.btn-dark{
+  background-color: rgb(18,41,79);
+}
+
 .main-menu{
   width: 100%;
   height: 100%;
