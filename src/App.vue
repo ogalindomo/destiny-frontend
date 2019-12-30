@@ -1,16 +1,15 @@
 <template>
   <div id="app">
     
-    <div class="banana">
+    <div class="page">
       <header></header>
       <div class="main-b">
         <div class="form-area d-none d-sm-block large-image-area">
-          <img alt="UTEP logo" height='156' width='200' src="./assets/UTEP.png">
+          <img alt="UTEP logo" src="./assets/UTEP.png">
         </div>
         <div class="d-sm-none small-image-area">
-          <img alt="UTEP logo" height='117' width='150' src="./assets/UTEP.png">
+          <img alt="UTEP logo" src="./assets/UTEP.png">
         </div>
-
         <div class="bar-spacing">
         </div>
         <div class="small-bar-spacing">
@@ -37,10 +36,6 @@ export default {
 </script>
 
 <style>
-/*img{
-  margin-bottom:7%
-}*/
-
 #app {
   font-family: 'Avenir', Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -52,34 +47,25 @@ export default {
   /*orange*/
   /*background-color: rgb(240, 139, 62);*/
 }
-
 .small-image-area{
   padding-top: 20px;
   height: 150px;
   background-color: rgb(18, 41, 79);
 }
-
 .large-image-area{
   padding-top: 30px;
   height: 215px;
   background-color: rgb(18, 41, 79);
 }
 #form-tex-area{
-   /* border: 5px solid black; */
    min-height: 70vh;
    display: flex;
    flex-direction: column;
    justify-content: center;
    overflow-y: hidden;
-  background: linear-gradient(rgb(240, 139, 62) 5%, rgb(255, 157, 82) 40%, rgb(246, 246, 246) 30%, white 55%);
-  
-  /*Maybe*/
-  /*background: linear-gradient(rgb(240, 139, 62) 5%, rgb(255, 157, 82) 40%, rgb(241,241,241) 30%, rgb(241,241,241) 55%);*/
-   /*background: linear-gradient(rgb(18,41,79), rgb(203, 208, 212) 65%);*/
-   /*background-color: rgb(21, 37, 89); */
-   
+    background: linear-gradient(rgb(240, 139, 62) 5%, rgb(255, 157, 82) 40%, rgb(246, 246, 246) 30%, white 55%);
 }
-.banana{
+.page{
     min-height: 100%;
     display: flex;
     flex-direction: column;
@@ -103,5 +89,12 @@ header{
   margin-bottom: 1%;
   border: 5px solid rgb(215, 215, 215);
 }
-
+.large-image-area img{
+  height: 156px;
+  width: 200px;
+}
+.small-image-area img{
+  height: 117px;
+  width: 150px;
+}
 </style>

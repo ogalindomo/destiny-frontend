@@ -10,7 +10,6 @@
     </div>
     
     <div class="d-sm-none small-form-area">
-      
       <div class="inner-form-area">
         <b-row>
           <div class="row1-space-small"></div>
@@ -18,7 +17,7 @@
         <b-row>
           <b-col class="text-center"> 
               <picture-input 
-                style="border: 2px solid black; width: 100%"
+                style="width: 100%"
                 ref="pictureInput" 
                 @change="onChange" 
                 width="400" 
@@ -45,7 +44,9 @@
           <b-col>Sample:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: right;" cols="12" rows="1"></textarea></b-col>
+          <b-col>
+            <textarea class= "sample-field id-overflow" v-model="ID" cols="12" rows="1"></textarea>
+          </b-col>
         </b-row>
         <b-row>
           <div class="row3-space-small"></div>
@@ -54,7 +55,9 @@
           <b-col>Miners ID:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: left;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col>
+            <textarea class="id-field" v-model="MinersID" cols="12" rows="1" disabled></textarea>
+          </b-col>
         </b-row>
         <b-row>
           <div class="row2-space-small"></div>
@@ -72,7 +75,7 @@
         </b-row>
         <b-row>
           <b-col class="text-center">
-            <textarea id="input" style="resize: none; text-align:center;" class="input-area;" v-model="formula"></textarea>
+            <textarea id="input" class="input-area;" v-model="formula"></textarea>
           </b-col>
         </b-row>
         <b-row>
@@ -282,59 +285,21 @@ div{
   /* border: 10px solid red; */
 }
 .small-form-area{
-  outline: 3px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: repeating-linear-gradient(
-    45deg,
-    rgb(240, 139, 62),
-    rgb(240, 139, 62) 5px,
-    rgb(255, 209, 168) 5px,
-    rgb(255, 209, 168) 10px
-  );
   overflow-y: hidden;
-  
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: rgb(231, 230, 225);
 }
 .form-area{
-  /*outline: 3px solid rgb(12,36,73);*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   border-top-left-radius: 5px;
   border-top-right-radius: 5px;
-  /*background: repeating-linear-gradient(
-    45deg,
-    rgb(241, 241, 241),
-    rgb(241, 241, 241) 10px,
-    rgb(231, 230, 225) 10px,
-    rgb(231, 230, 225) 20px
-  );*/
-  //background: rgb(177,179,179);
   background: rgb(231, 230, 225);
-  /*background: repeating-linear-gradient(
-    45deg,
-    rgb(240, 139, 62),
-    rgb(240, 139, 62) 10px,
-    rgb(23,41,76) 10px,
-    rgb(23,41,76) 40px,
-    white 40px,
-    white 45px
-  );*/
-  /*background: repeating-linear-gradient(
-    40deg,
-    rgb(240, 139, 62),
-    rgb(240, 139, 62) 10px,
-    rgb(255, 209, 168) 10px,
-    rgb(255, 209, 168) 20px
-  );*/
-  /*background: repeating-linear-gradient(
-    45deg,
-    rgb(240, 139, 62),
-    rgb(240, 139, 62) 10px,
-    rgb(255, 209, 168) 10px,
-    rgb(255, 209, 168) 20px
-  );*/
 }
 textarea{
   font-size: 1em;
@@ -351,23 +316,29 @@ h1,h2 {
   white-space: nowrap;
   overflow-x: auto;
 }
-/*TODO: Delete when done. For testing only*/
 .col{
-  //border: 2px solid green;
   background-color: white;
   width: 90%;
 }
-
 .inner-form-area{
   background-color: white;
-  //border: 1px solid red;
 }
 .id-overflow{
   white-space: nowrap;
   overflow: hidden;
 }
+.sample-field{
+  resize: none; 
+  text-align: right;
+}
+.id-field{
+  resize: none; 
+  text-align: left;
+}
 #input{
   width: 90%;
+  resize: none; 
+  text-align:center;
 }
 .head-space-small{
   margin-top: 5%;
@@ -397,8 +368,5 @@ h1,h2 {
 }
 .row3-space-small{
   margin-top: 2%;
-}
-.top-inner-form-large{
-  padding: 1%;
 }
 </style>
