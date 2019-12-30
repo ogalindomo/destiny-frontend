@@ -95,7 +95,7 @@
         </b-row>
       </div>
     </div>
-
+<!-- Division between styles of screen -->
     <div class="form-area d-none d-sm-block">
       <div class="inner-form-area">
         <b-row>
@@ -109,7 +109,7 @@
                   width="720" 
                   height="300" 
                   :autoToggleAspectRatio="true" 
-                  margin="8" 
+                  margin="0" 
                   accept="image/jpeg,image/png" 
                   size="10" 
                   buttonClass="btn"
@@ -187,10 +187,11 @@
 <script>
 import { VueMathjax } from 'vue-mathjax'
 import PictureInput from 'vue-picture-input'
+import {uuid} from 'vue-uuid';
 export default {
   components: {
     'vue-mathjax': VueMathjax,
-    PictureInput
+    PictureInput,
   },
   mounted() {
   
@@ -227,10 +228,11 @@ export default {
       inputExpand(event.target);
     }, false);
     
+    // Adjust the size of CSS elements that need text
     document.documentElement.style.setProperty('--size', this.calculateFontSize()+'em');
-    alert(this.calculateFontSize());
     document.documentElement.style.setProperty('--fontSize', this.calculateFontSize()+'em');
-    // let variable = getComputedStyle(document.documentElement).getPropertyValue('--size');
+    
+    this.ID = this.$uuid.v4();
   },
   methods:{
     calculateCols(){
@@ -260,10 +262,11 @@ export default {
       input:"",
       formula: '$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$$',
       msg: 'Welcome to Your Vue.js App',
-      ID: null,
       MinersID:'ogalindomo',
       cols:0,
       hasImage: false,
+      ID: "",
+      uuid: uuid.v1()
     }
   },
 }
