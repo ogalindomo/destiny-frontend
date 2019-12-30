@@ -244,16 +244,19 @@ export default {
       return calc;
     },
     onChange(img){
-      alert(typeof(img));
-      alert(img);
-      if (img != null){
-        img = img.substring(img.indexOf(",")+1);
-        alert(atob(img));
-        alert(typeof(atob(img)));
-      }
+      this.img = img;
+      // alert(typeof(img));
+      // alert(typeof(img));
+      // alert(img);
+      // if (img != null){
+      //   img = img.substring(img.indexOf(",")+1);
+      //   alert(atob(img));
+      //   alert(typeof(atob(img)));
+      // }
     },
     test(){
       this.onChange(null);
+      location.reload();
     }
   },
   name: 'FormTex',
@@ -279,9 +282,14 @@ export default {
 
 .btn-dark{
   background-color: rgb(18,41,79);
+  color: rgb(240, 139, 62);
 }
 
-.btn-dark{
+.btn-dark:hover{
+  background-color: rgb(18,41,79);
+}
+
+.btn-dark::after{
   background-color: rgb(18,41,79);
 }
 
@@ -337,7 +345,7 @@ textarea{
   font-size: 1em;
   text-align:left;
   border-radius: 5px;
-  //border: 1px solid blue;
+  /* border: 1px solid blue; */
 }
 h1,h2 {
   font-weight: normal;
@@ -352,13 +360,13 @@ h1,h2 {
 
 /*TODO: Delete when done. For testing only*/
 .col{
-  //border: 2px solid green;
+  /* border: 2px solid green; */
   background-color: white;
   width: 90%;
 }
 .inner-form-area{
   background-color: white;
-  //border: 1px solid red;
+  /* border: 1px solid red; */
 }
 .id-overflow{
   white-space: nowrap;
