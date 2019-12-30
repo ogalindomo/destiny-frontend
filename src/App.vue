@@ -101,7 +101,7 @@ header{
 }
 .bar-spacing{
   margin-bottom: 1%;
-  border: 5px solid rgb(241, 241, 241);
+  border: 5px solid rgb(215, 215, 215);
 }
 
 </style>
