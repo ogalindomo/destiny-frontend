@@ -42,16 +42,28 @@
           <b-col>Sample:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
+          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row3-space-small"></div>
         </b-row>
         <b-row>
+          <b-col>Class:</b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <b-dropdown id="dropdown-left" text="Class" variant="primary" class="m-2">
+              <b-dropdown-item href="#">Action</b-dropdown-item>
+              <b-dropdown-item href="#">Another action</b-dropdown-item>
+              <b-dropdown-item href="#">Something else here</b-dropdown-item>
+            </b-dropdown>
+          </b-col>
+        </b-row>
+        <b-row>
           <b-col>Miners ID:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row2-space-small"></div>
@@ -124,12 +136,20 @@
           </div>
         <b-row>
           <b-col class="text-center">Sample:</b-col>
+          <b-col class="text-center">Class:</b-col>
           <b-col class="text-center">Miners ID:</b-col>
         </b-row>
         
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col>
+            <b-dropdown id="dropdown-left" text="Class" variant="primary" class="m-2">
+              <b-dropdown-item href="#">Action</b-dropdown-item>
+              <b-dropdown-item href="#">Another action</b-dropdown-item>
+              <b-dropdown-item href="#">Something else here</b-dropdown-item>
+            </b-dropdown>
+          </b-col>
+          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
         </b-row>  
         <b-row>
           <div class="row2-space-large"></div>
@@ -233,6 +253,7 @@ export default {
     document.documentElement.style.setProperty('--fontSize', this.calculateFontSize()+'em');
     
     this.ID = this.$uuid.v4();
+    this.copyID = this.ID;
   },
   methods:{
     calculateCols(){
@@ -269,6 +290,7 @@ export default {
       cols:0,
       hasImage: false,
       ID: "",
+      copyID: "",
       uuid: uuid.v1()
     }
   },
