@@ -10,6 +10,7 @@
     </div>
     
     <div class="d-sm-none small-form-area">
+      
       <div class="inner-form-area">
         <b-row>
           <div class="row1-space-small"></div>
@@ -96,7 +97,9 @@
     </div>
 
     <div class="form-area d-none d-sm-block">
+  
       <div class="inner-form-area">
+        
         <b-row>
           <div class="row1-space-large"></div>
         </b-row>
@@ -171,16 +174,12 @@
         <b-row>
           <div class="row1-space-large"></div>
         </b-row>
+        <b-row>
+          <div class="foot-space"></div>
+        </b-row>
       </div>
     </div>
-    <div>
-      <b-row class="d-sm-none">
-        <div class="foot-space"></div>
-      </b-row>
-      <b-row class="d-none d-sm-block">
-        <div class="foot-space"></div>
-      </b-row>
-    </div>
+
   </div>
 </template>
 
@@ -272,10 +271,6 @@ export default {
   width: 100%;
   height: 100%;
   margin:0;
-  /* border: 1px solid orange; */
-  /*display: flex;
-  flex-direction: column;
-  justify-content: space-between;*/
 }
 .input-area{
   font-size: var(--size);
@@ -302,23 +297,49 @@ div{
   
 }
 .form-area{
-  outline: 3px solid rgb(12,36,73);
+  /*outline: 3px solid rgb(12,36,73);*/
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: repeating-linear-gradient(
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  /*background: repeating-linear-gradient(
+    45deg,
+    rgb(241, 241, 241),
+    rgb(241, 241, 241) 10px,
+    rgb(231, 230, 225) 10px,
+    rgb(231, 230, 225) 20px
+  );*/
+  //background: rgb(177,179,179);
+  background: rgb(231, 230, 225);
+  /*background: repeating-linear-gradient(
+    45deg,
+    rgb(240, 139, 62),
+    rgb(240, 139, 62) 10px,
+    rgb(23,41,76) 10px,
+    rgb(23,41,76) 40px,
+    white 40px,
+    white 45px
+  );*/
+  /*background: repeating-linear-gradient(
+    40deg,
+    rgb(240, 139, 62),
+    rgb(240, 139, 62) 10px,
+    rgb(255, 209, 168) 10px,
+    rgb(255, 209, 168) 20px
+  );*/
+  /*background: repeating-linear-gradient(
     45deg,
     rgb(240, 139, 62),
     rgb(240, 139, 62) 10px,
     rgb(255, 209, 168) 10px,
     rgb(255, 209, 168) 20px
-  );
+  );*/
 }
 textarea{
   font-size: 1em;
   text-align:left;
   border-radius: 5px;
-  //border: 1px solid blue;
 }
 h1,h2 {
   font-weight: normal;
@@ -336,6 +357,7 @@ h1,h2 {
   background-color: white;
   width: 90%;
 }
+
 .inner-form-area{
   background-color: white;
   //border: 1px solid red;
@@ -351,7 +373,7 @@ h1,h2 {
   margin-top: 5%;
 }
 .head-space-large{
-  margin-top: 2%;
+  margin-top: 4%;
 }
 .row1-space-large{
   margin-top: 3%;
@@ -375,5 +397,8 @@ h1,h2 {
 }
 .row3-space-small{
   margin-top: 2%;
+}
+.top-inner-form-large{
+  padding: 1%;
 }
 </style>

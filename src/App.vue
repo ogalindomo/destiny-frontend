@@ -10,6 +10,11 @@
         <div class="d-sm-none small-image-area">
           <img alt="UTEP logo" height='117' width='150' src="./assets/UTEP.png">
         </div>
+
+        <div class="bar-spacing">
+        </div>
+        <div class="small-bar-spacing">
+        </div>
         <div id="form-tex-area">
           <FormTex></FormTex>
         </div>
@@ -43,7 +48,9 @@ export default {
   text-align: center;
   color: #2c3e50;
   height: 99.9vh;
-  background-color: rgb(240, 139, 62);
+  background-color: white;
+  /*orange*/
+  /*background-color: rgb(240, 139, 62);*/
 }
 
 .small-image-area{
@@ -64,8 +71,12 @@ export default {
    flex-direction: column;
    justify-content: center;
    overflow-y: hidden;
-   background: linear-gradient(rgb(18,41,79), rgb(203, 208, 212) 65%);
-   /* //background-color: rgb(21, 37, 89); */
+  background: linear-gradient(rgb(240, 139, 62) 5%, rgb(255, 157, 82) 40%, rgb(246, 246, 246) 30%, white 55%);
+  
+  /*Maybe*/
+  /*background: linear-gradient(rgb(240, 139, 62) 5%, rgb(255, 157, 82) 40%, rgb(241,241,241) 30%, rgb(241,241,241) 55%);*/
+   /*background: linear-gradient(rgb(18,41,79), rgb(203, 208, 212) 65%);*/
+   /*background-color: rgb(21, 37, 89); */
    
 }
 .banana{
@@ -78,10 +89,19 @@ export default {
   flex-grow: 1;
   flex-shrink: 0;
 }
-footer, header{
+footer{
   flex-shrink: 0;
   border: 5px solid rgb(240, 139, 62);
   bottom: 0;
+}
+header{
+  flex-shrink: 0;
+  border: 5px solid white;
+  bottom: 0;
+}
+.bar-spacing{
+  margin-bottom: 1%;
+  border: 5px solid rgb(241, 241, 241);
 }
 
 </style>
