@@ -5,36 +5,38 @@
         <div class="head-space-small"></div>
       </b-row>
       <b-row class="d-none d-sm-block">
-        <div class="head-foot-large"></div>
+        <div class="head-space-large"></div>
       </b-row>
     </div>
+    
     <div class="d-sm-none small-form-area">
       <div class="inner-form-area">
-        <div class="photo-area">
-          <b-row>
-            <b-col class="text-center"> 
-                <picture-input 
-                  style="border: 2px solid black; margin-top: 10%; margin-bottom:2%; width: 100%"
-                  ref="pictureInput" 
-                  @change="onChange" 
-                  width="400" 
-                  height="400" 
-                  :autoToggleAspectRatio="true" 
-                  margin="0"
-                  accept="image/jpeg,image/png" 
-                  size="10" 
-                  buttonClass="btn"
-                  :hideChangeButton="true"
-                  :crop="false"
-                  :customStrings="{
-                    upload: '<h1>Bummer!</h1>',
-                    drag: 'Import an image',
-                    tap: 'Tap to upload an image'
-                  }">
-                </picture-input>
-              </b-col>
-            </b-row>
-          </div>
+        <b-row>
+          <div class="row1-space-small"></div>
+        </b-row>
+        <b-row>
+          <b-col class="text-center"> 
+              <picture-input 
+                style="width: 100%"
+                ref="pictureInput" 
+                @change="onChange" 
+                width="400" 
+                height="400" 
+                :autoToggleAspectRatio="true" 
+                margin="0"
+                accept="image/jpeg,image/png" 
+                size="10" 
+                buttonClass="btn"
+                :hideChangeButton="true"
+                :crop="false"
+                :customStrings="{
+                  upload: '<h1>Bummer!</h1>',
+                  drag: 'Import an image',
+                  tap: 'Tap to upload an image'
+                }">
+            </picture-input>
+          </b-col>
+        </b-row>
         <b-row>
           <div class="row1-space-small"></div>
         </b-row>
@@ -42,7 +44,9 @@
           <b-col>Sample:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col>
+            <textarea class= "sample-field id-overflow" style="resize: none; text-align: center;" v-model="ID" cols="12" rows="1" disabled></textarea>
+          </b-col>
         </b-row>
         <b-row>
           <div class="row3-space-small"></div>
@@ -115,7 +119,7 @@
         </b-row>
           <div class="photo-area">
                 <picture-input 
-                  style="margin-top: 2%; margin-bottom:2%;"
+                  style="margin-bottom: 2%"
                   ref="pictureInput" 
                   @change="onChange" 
                   width="720" 
@@ -190,16 +194,12 @@
         <b-row>
           <div class="row1-space-large"></div>
         </b-row>
+        <b-row>
+          <div class="foot-space"></div>
+        </b-row>
       </div>
     </div>
-    <div>
-      <b-row class="d-sm-none">
-        <div class="foot-space-small"></div>
-      </b-row>
-      <b-row class="d-sm-none">
-        <div class="foot-space-small"></div>
-      </b-row>
-    </div>
+
   </div>
 </template>
 
@@ -340,10 +340,6 @@ export default {
   width: 100%;
   height: 100%;
   margin:0;
-  /* border: 1px solid orange; */
-  /*display: flex;
-  flex-direction: column;
-  justify-content: space-between;*/
 }
 .input-area{
   font-size: var(--size);
@@ -355,40 +351,26 @@ div{
   /* border: 10px solid red; */
 }
 .small-form-area{
-  outline: 3px solid black;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: repeating-linear-gradient(
-    45deg,
-    rgb(240, 139, 62),
-    rgb(240, 139, 62) 5px,
-    rgb(255, 209, 168) 5px,
-    rgb(255, 209, 168) 10px
-  );
   overflow-y: hidden;
-  
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: rgb(231, 230, 225);
 }
-
 .form-area{
-  outline: 3px solid rgb(12,36,73);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  background: repeating-linear-gradient(
-    45deg,
-    rgb(240, 139, 62),
-    rgb(240, 139, 62) 10px,
-    rgb(255, 209, 168) 10px,
-    rgb(255, 209, 168) 20px
-  );
+  border-top-left-radius: 5px;
+  border-top-right-radius: 5px;
+  background: rgb(231, 230, 225);
 }
-
 textarea{
   font-size: 1em;
   text-align:left;
   border-radius: 5px;
-  /* border: 1px solid blue; */
 }
 h1,h2 {
   font-weight: normal;
@@ -400,29 +382,35 @@ h1,h2 {
   white-space: nowrap;
   overflow-x: auto;
 }
-
-/*TODO: Delete when done. For testing only*/
 .col{
-  /* border: 2px solid green; */
   background-color: white;
   width: 90%;
 }
 .inner-form-area{
   background-color: white;
-  /* border: 1px solid red; */
 }
 .id-overflow{
   white-space: nowrap;
   overflow: hidden;
 }
+.sample-field{
+  resize: none; 
+  text-align: right;
+}
+.id-field{
+  resize: none; 
+  text-align: left;
+}
 #input{
   width: 90%;
+  resize: none; 
+  text-align:center;
 }
 .head-space-small{
   margin-top: 5%;
 }
 .head-space-large{
-  margin-top: 2%;
+  margin-top: 4%;
 }
 .row1-space-large{
   margin-top: 3%;
@@ -430,19 +418,15 @@ h1,h2 {
 .row2-space-large{
   margin-top: 2%;
 }
-
 .line-divider{
   margin-top: 1px;
   border: 1px solid rgb(240, 139, 62);
 }
-.foot-space-small{
+.foot-space{
   margin-top: 3%;
 }
-.foot-space-large{
-  margin-bottom: 2%;
-}
-
 .row1-space-small{
+  border: 1px solid red;
   margin-top: 8%;
 }
 .row2-space-small{
