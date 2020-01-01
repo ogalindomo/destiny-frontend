@@ -13,5 +13,4 @@ var app = new Vue({
 });
 Vue.use(BootstrapVue);
 Vue.use(UUID);
-// Vue.use(ImageUploader)
 app.$mount('#app'); 
