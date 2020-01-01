@@ -8,7 +8,6 @@
         <div class="head-space-large"></div>
       </b-row>
     </div>
-    
     <div class="d-sm-none small-form-area">
       <div class="inner-form-area">
         <b-row>
