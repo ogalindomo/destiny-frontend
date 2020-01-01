@@ -63,6 +63,9 @@
           </b-col>
         </b-row>
         <b-row>
+          <div class="row2-space-small"></div>
+        </b-row>
+        <b-row>
           <b-col>Miners ID:</b-col>
         </b-row>
         <b-row>
