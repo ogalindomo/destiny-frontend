@@ -52,11 +52,11 @@
         </b-row>
         <b-row>
           <b-col>
-            <b-dropdown id="dropdown-left" text="Class" variant="primary" class="m-2">
-              <b-dropdown-item href="#">Action</b-dropdown-item>
-              <b-dropdown-item href="#">Another action</b-dropdown-item>
-              <b-dropdown-item href="#">Something else here</b-dropdown-item>
-            </b-dropdown>
+            <select v-model="option">
+              <option>Matrix Algebra</option>
+              <option>Calculus III</option>
+              <option>Foundations of Logic</option>
+            </select>
           </b-col>
         </b-row>
         <b-row>
@@ -100,7 +100,7 @@
           </b-col>
         </b-row>
         <b-row>
-          <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="test">Submit</b-button></b-col>
+          <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="submissionClicked">Submit</b-button></b-col>
         </b-row>
         <b-row>
           <div class="row1-space-small"></div>
@@ -139,15 +139,14 @@
           <b-col class="text-center">Class:</b-col>
           <b-col class="text-center">Miners ID:</b-col>
         </b-row>
-        
         <b-row>
           <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
-          <b-col>
-            <b-dropdown id="dropdown-left" text="Class" variant="primary" class="m-2">
-              <b-dropdown-item href="#">Action</b-dropdown-item>
-              <b-dropdown-item href="#">Another action</b-dropdown-item>
-              <b-dropdown-item href="#">Something else here</b-dropdown-item>
-            </b-dropdown>
+          <b-col align-self="center">
+            <select v-model="option">
+              <option>Matrix Algebra</option>
+              <option>Calculus III</option>
+              <option>Foundations of Logic</option>
+            </select>
           </b-col>
           <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
         </b-row>  
@@ -186,7 +185,7 @@
           </b-col>
         </b-row>
         <b-row>
-          <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="test">Submit</b-button></b-col>
+          <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="submissionClicked">Submit</b-button></b-col>
         </b-row>
         <b-row>
           <div class="row1-space-large"></div>
@@ -254,6 +253,7 @@ export default {
     
     this.ID = this.$uuid.v4();
     this.copyID = this.ID;
+    this.retrieveInfo();
   },
   methods:{
     calculateCols(){
@@ -265,19 +265,42 @@ export default {
       return calc;
     },
     onChange(img){
-      this.img = img;
-      // alert(typeof(img));
-      // alert(typeof(img));
-      // alert(img);
-      // if (img != null){
-      //   img = img.substring(img.indexOf(",")+1);
-      //   alert(atob(img));
-      //   alert(typeof(atob(img)));
-      // }
+      if (img != null){
+        this.img = img;
+      }
+      else{
+        alert("Please upload an image.");
+      }
     },
-    test(){
-      this.onChange(null);
-      location.reload();
+    retrieveInfo(){
+        var retrievedMinersID = localStorage.getItem("ID");
+        var retrievedOption = localStorage.getItem("class");
+        if(retrievedMinersID != null)
+          this.MinersID = retrievedMinersID;
+        if(retrievedOption != null || retrievedOption != '')
+          this.option = retrievedOption;
+    },
+    submissionClicked(){
+      if(this.img != null){
+        if(this.MinersID != ''){
+          if(this.option != ''){
+            // The miners id and the options are saved before the website is re uploaded.
+            localStorage.setItem("ID", this.MinersID);
+            localStorage.setItem("class", this.option);
+            // Forces a reload of the website.
+            window.location.reload(false); 
+          }
+          else{
+            alert("Please select a class.")
+          }
+        }
+        else{
+          alert("Please write your Miners ID.")
+        }
+      }
+      else{
+        alert("Please upload an image")
+      }
     }
   },
   name: 'FormTex',
@@ -285,13 +308,11 @@ export default {
     return {
       input:"",
       formula: '$$x = {-b \\pm \\sqrt{b^2-4ac} \\over 2a}$$',
-      msg: 'Welcome to Your Vue.js App',
-      MinersID:'ogalindomo',
-      cols:0,
-      hasImage: false,
+      MinersID:'',
       ID: "",
       copyID: "",
-      uuid: uuid.v1()
+      uuid: uuid.v1(),
+      option: '',
     }
   },
 }
@@ -299,8 +320,8 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-.photo-area{
-}
+/* .photo-area{
+} */
 
 .btn-dark{
   background-color: rgb(18,41,79);
