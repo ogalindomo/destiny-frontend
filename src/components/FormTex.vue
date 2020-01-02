@@ -44,7 +44,7 @@
         </b-row>
         <b-row>
           <b-col>
-            <textarea class= "sample-field id-overflow" style="resize: none; text-align: center;" v-model="ID" cols="12" rows="1" disabled></textarea>
+            <textarea class= "sample-field id-overflow" style="resize: none;" v-model="ID" cols="12" rows="1" disabled></textarea>
           </b-col>
         </b-row>
         <b-row>
@@ -69,7 +69,7 @@
           <b-col>Miners ID:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
+          <b-col><textarea class="id-field id-overflow" v-model="MinersID" style="resize: none;" cols="12" rows="1"></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row2-space-small"></div>
@@ -146,7 +146,7 @@
           <b-col class="text-center">Miners ID:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class="id-overflow user-selection" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col><textarea class="sample-field id-overflow user-selection" v-model="ID" style="resize: none;" cols="12" rows="1" disabled></textarea></b-col>
           <b-col align-self="center">
             <select v-model="option" class="user-selection">
               <option>Matrix Algebra</option>
@@ -155,7 +155,7 @@
             </select>
           </b-col>
           <b-col>
-            <textarea class="user-selection" v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea>
+            <textarea class="id-field id-overflow user-selection" v-model="MinersID" style="resize: none;" cols="12" rows="1"></textarea>
           </b-col>
         </b-row>  
         <b-row>
