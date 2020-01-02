@@ -255,10 +255,6 @@ export default {
     this.retrieveInfo();
   },
   methods:{
-    calculateCols(){
-      this.cols = parseInt(screen.width/56);
-      document.getElementById("input").cols = String(Math.max(parseInt(screen.width/56),20));
-    },
     calculateFontSize(){
       var calc = Math.max(((screen.width/1680)*2), 0.75);
       return calc;
@@ -300,7 +296,7 @@ export default {
       else{
         alert("Please upload an image")
       }
-    }
+    },
   },
   name: 'FormTex',
   data () {
@@ -319,9 +315,6 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped>
-/* .photo-area{
-} */
-
 .btn-dark{
   background-color: rgb(18,41,79);
   color: rgb(240, 139, 62);
