@@ -146,15 +146,17 @@
           <b-col class="text-center">Miners ID:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class= "id-overflow" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
+          <b-col><textarea class="id-overflow user-selection" v-model="ID" style="resize: none; text-align: center;" cols="12" rows="1" disabled></textarea></b-col>
           <b-col align-self="center">
-            <select v-model="option">
+            <select v-model="option" class="user-selection">
               <option>Matrix Algebra</option>
               <option>Calculus III</option>
               <option>Foundations of Logic</option>
             </select>
           </b-col>
-          <b-col><textarea v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea></b-col>
+          <b-col>
+            <textarea class="user-selection" v-model="MinersID" style="resize: none; text-align: center;" cols="12" rows="1"></textarea>
+          </b-col>
         </b-row>  
         <b-row>
           <div class="row2-space-large"></div>
@@ -436,5 +438,35 @@ h1,h2 {
 }
 .row3-space-small{
   margin-top: 2%;
+}
+@media (max-width: 952px) and (min-width: 900px){
+  .user-selection{
+    width: 120px;
+  }
+}
+@media (max-width: 899px) and (min-width: 765px){
+  .user-selection{
+    width: 100px;
+  }
+}
+@media (max-width: 764px) and (min-width: 706px){
+  .user-selection{
+    width: 90px;
+  }
+}
+@media (max-width: 705px) and (min-width: 651px){
+  .user-selection{
+    width: 80px;
+  }
+}
+@media (max-width: 650px) and (min-width: 589px){
+  .user-selection{
+    width: 70px;
+  }
+}
+@media (max-width: 588px) and (min-width: 574px){
+  .user-selection{
+    width: 65px;
+  }
 }
 </style>
