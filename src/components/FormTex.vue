@@ -117,11 +117,11 @@
     <div class="form-area d-none d-sm-block">
       <div class="inner-form-area">
         <b-row>
-          <div class="row1-space-large"></div>
+          <div class="row2-space-small"></div>
         </b-row>
-          <div class="photo-area">
+        <b-row>
+          <b-col class="photo-area">
                 <picture-input 
-                  style="margin-bottom: 2%"
                   ref="pictureInput" 
                   @change="onChange" 
                   width="720" 
@@ -139,7 +139,11 @@
                     tap: 'Tap to upload an image'
                   }">
                 </picture-input>
-          </div>
+          </b-col>
+        </b-row>
+        <b-row>
+          <div class="row2-space-small"></div>
+        </b-row>
         <b-row>
           <b-col class="text-center">Sample:</b-col>
           <b-col class="text-center">Class:</b-col>
