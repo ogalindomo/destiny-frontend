@@ -215,6 +215,7 @@
 import { VueMathjax } from 'vue-mathjax'
 import PictureInput from 'vue-picture-input'
 import {uuid} from 'vue-uuid';
+import axios from 'axios';
 export default {
   components: {
     'vue-mathjax': VueMathjax,
@@ -291,8 +292,7 @@ export default {
             // The miners id and the options are saved before the website is re uploaded.
             localStorage.setItem("ID", this.MinersID);
             localStorage.setItem("class", this.option);
-            // Forces a reload of the website.
-            window.location.reload(false); 
+            this.sendImageToScript();
           }
           else{
             alert("Please select a class.")
@@ -306,6 +306,21 @@ export default {
         alert("Please upload an image")
       }
     },
+    sendImageToScript(){
+      // Posts info to localhost on port 5000
+      // Sanity check can be seen if navigated to that url
+      axios.post('http://127.0.0.1:5000/', {
+        id: this.MinersID,
+        imageID: this.ID,
+        image: this.img
+      })
+      .then((res) => {
+        this.received = res.data;
+      });
+      alert(this.received.msg)
+      // Forces a reload of the website.
+      //window.location.reload(false); 
+    }
   },
   name: 'FormTex',
   data () {
