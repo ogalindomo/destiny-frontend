@@ -1,17 +1,22 @@
 from flask import Flask, request
 from flask_cors import CORS
+import subprocess, json
 
 app = Flask("ImageProcessingEngine")
 
-CORS(app, resources={r'/*':{'origins':'*'}})
+CORS(app, resources={r'/*':{'origins':"173.175.170.153:*"}})
 
 @app.route("/", methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hello():
     if request.method == "POST":
-        print(request.json)
-        return {'msg':'The image was received!'}
+        received = request.json
+        process_image(received)
+        return {'msg':'The image was received!'}    
     else:
         return {'msg':'Heard a Get'}
 
+def process_image(argument_vector):
+    subprocess.call(["python3", "temp.py"]) #, json.dumps(argument_vector)])
+
 if __name__ == "__main__":
-    app.run()
+    app.run(host='0.0.0.0')

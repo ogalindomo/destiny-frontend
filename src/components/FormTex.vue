@@ -286,30 +286,36 @@ export default {
           this.option = retrievedOption;
     },
     submissionClicked(){
-      if(this.img != null){
-        if(this.MinersID != ''){
-          if(this.option != ''){
-            // The miners id and the options are saved before the website is re uploaded.
-            localStorage.setItem("ID", this.MinersID);
-            localStorage.setItem("class", this.option);
-            this.sendImageToScript();
+      if(this.formula.localeCompare('')){
+        if(this.img != null){
+          if(this.MinersID != ''){
+            if(this.option != ''){
+              alert(this.formula)
+              // The miners id and the options are saved before the website is re uploaded.
+              localStorage.setItem("ID", this.MinersID);
+              localStorage.setItem("class", this.option);
+              this.sendImageToScript();
+            }
+            else{
+              alert("Please select a class.")
+            }
           }
           else{
-            alert("Please select a class.")
+            alert("Please write your Miners ID.")
           }
         }
         else{
-          alert("Please write your Miners ID.")
+          alert("Please upload an image")
         }
       }
       else{
-        alert("Please upload an image")
+        alert("Please write something.")
       }
     },
     sendImageToScript(){
       // Posts info to localhost on port 5000
       // Sanity check can be seen if navigated to that url
-      axios.post('http://127.0.0.1:5000/', {
+      axios.get('http://173.175.170.153:5000/', {
         id: this.MinersID,
         imageID: this.ID,
         image: this.img
@@ -317,9 +323,9 @@ export default {
       .then((res) => {
         this.received = res.data;
       });
-      alert(this.received.msg)
+      alert(this.received)
       // Forces a reload of the website.
-      //window.location.reload(false); 
+      // window.location.reload(false); 
     }
   },
   name: 'FormTex',
