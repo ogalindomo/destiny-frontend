@@ -315,7 +315,7 @@ export default {
     sendImageToScript(){
       // Posts info to localhost on port 5000
       // Sanity check can be seen if navigated to that url
-      axios.get('http://173.175.170.153:5000/', {
+      axios.get('http://129.108.156.19:5000/', {
         id: this.MinersID,
         imageID: this.ID,
         image: this.img
