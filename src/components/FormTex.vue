@@ -325,7 +325,7 @@ export default {
       });
       alert(this.received)
       // Forces a reload of the website.
-      // window.location.reload(false); 
+      window.location.reload(false); 
     }
   },
   name: 'FormTex',
