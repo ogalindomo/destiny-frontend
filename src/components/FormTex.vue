@@ -315,17 +315,19 @@ export default {
     sendImageToScript(){
       // Posts info to localhost on port 5000
       // Sanity check can be seen if navigated to that url
-      axios.get('http://129.108.156.19:5000/', {
+      axios.post('http://129.108.156.19:5000/', {
         id: this.MinersID,
         imageID: this.ID,
         image: this.img
       })
       .then((res) => {
-        this.received = res.data;
-      });
-      alert(this.received)
+        //this.received = res.data;
+	//alert(res.data);
+	alert(res.data.msg);
+      },(error) => {alert(error);alert(error.response);alert(error.code);});
+      //alert(this.received)
       // Forces a reload of the website.
-      window.location.reload(false); 
+      //window.location.reload(false); 
     }
   },
   name: 'FormTex',
