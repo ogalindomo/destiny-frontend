@@ -321,13 +321,12 @@ export default {
         image: this.img
       })
       .then((res) => {
-        //this.received = res.data;
-	//alert(res.data);
-	alert(res.data.msg);
-      },(error) => {alert(error);alert(error.response);alert(error.code);});
-      //alert(this.received)
-      // Forces a reload of the website.
-      //window.location.reload(false); 
+        alert(res.data.msg);
+        window.location.reload(false);
+      },(error) => {
+        alert(error);
+        alert(error.response);
+        alert(error.code);});
     }
   },
   name: 'FormTex',
