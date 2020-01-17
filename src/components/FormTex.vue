@@ -63,6 +63,16 @@
           </b-col>
         </b-row>
         <b-row>
+          <b-col>Instructor:</b-col>
+        </b-row>
+        <b-row>
+          <b-col>
+            <select v-model="instructor">
+              <option>Dr. Urenda</option>
+            </select>
+          </b-col>
+        </b-row>
+        <b-row>
           <div class="row2-space-small"></div>
         </b-row>
         <b-row>
@@ -147,6 +157,7 @@
         <b-row>
           <b-col class="text-center">Sample:</b-col>
           <b-col class="text-center">Class:</b-col>
+          <b-col class="text-center">Instructor:</b-col>
           <b-col class="text-center">Miners Username:</b-col>
         </b-row>
         <b-row>
@@ -156,6 +167,11 @@
               <option>Matrix Algebra</option>
               <option>Calculus III</option>
               <option>Foundations of Logic</option>
+            </select>
+          </b-col>
+          <b-col align-self="center">
+            <select v-model="instructor" class="user-selection">
+              <option>Dr. Urenda</option>
             </select>
           </b-col>
           <b-col>
@@ -341,6 +357,7 @@ export default {
       copyID: "",
       uuid: uuid.v1(),
       option: '',
+      instructor: ''
     }
   },
 }
