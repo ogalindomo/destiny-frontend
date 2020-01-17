@@ -66,7 +66,7 @@
           <div class="row2-space-small"></div>
         </b-row>
         <b-row>
-          <b-col>Miners ID:</b-col>
+          <b-col>Miners Username:</b-col>
         </b-row>
         <b-row>
           <b-col><textarea class="id-field id-overflow" v-model="MinersID" style="resize: none;" cols="12" rows="1"></textarea></b-col>
@@ -147,7 +147,7 @@
         <b-row>
           <b-col class="text-center">Sample:</b-col>
           <b-col class="text-center">Class:</b-col>
-          <b-col class="text-center">Miners ID:</b-col>
+          <b-col class="text-center">Miners Username:</b-col>
         </b-row>
         <b-row>
           <b-col><textarea class="sample-field id-overflow user-selection" v-model="ID" style="resize: none;" cols="12" rows="1" disabled></textarea></b-col>
@@ -318,6 +318,8 @@ export default {
       axios.post('http://129.108.156.19:5000/', {
         id: this.MinersID,
         imageID: this.ID,
+        class: this.option,
+        input_text: this.formula,
         image: this.img
       })
       .then((res) => {

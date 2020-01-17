@@ -6,7 +6,7 @@ app = Flask("ImageProcessingEngine")
 
 CORS(app, resources={r'/*':{'origins':"*"}})
 
-@app.route("/", methods=['GET', 'POST', 'DELETE', 'PUT', 'OPTIONS'])
+@app.route("/", methods=['GET', 'POST', 'DELETE', 'PUT'])
 def hello():
     print(request.method)
     if request.method == "POST":
