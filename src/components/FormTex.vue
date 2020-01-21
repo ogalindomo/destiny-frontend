@@ -334,7 +334,7 @@ export default {
       // Posts info to localhost on port 5000
       // Sanity check can be seen if navigated to that url
       alert("Please wait for a confirmation, do not click the submit again until a message is received.")
-      axios.post('http://129.108.156.19:8080/', {
+      axios.post('http://129.108.156.19:5000/', {
         id: this.MinersID,
         imageID: this.copyID,
         class: this.option,
