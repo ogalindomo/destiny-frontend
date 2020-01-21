@@ -296,44 +296,43 @@ export default {
     retrieveInfo(){
         var retrievedMinersID = localStorage.getItem("ID");
         var retrievedOption = localStorage.getItem("class");
+        var retrievedInstructor = localStorage.getItem("instructor");
         if(retrievedMinersID != null)
           this.MinersID = retrievedMinersID;
         if(retrievedOption != null || retrievedOption != '')
           this.option = retrievedOption;
+        if(retrievedInstructor != null || retrievedInstructor != 'null')
+          this.instructor = retrievedInstructor;
     },
     submissionClicked(){
-      if(this.formula.localeCompare('')){
-        if(this.img != null){
-          if(this.MinersID != ''){
-            if(this.option != ''){
-              alert(this.formula)
-              // The miners id and the options are saved before the website is re uploaded.
-              localStorage.setItem("ID", this.MinersID);
-              localStorage.setItem("class", this.option);
-              this.sendImageToScript();
-            }
-            else{
-              alert("Please select a class.")
-            }
-          }
-          else{
-            alert("Please write your Miners ID.")
-          }
-        }
-        else{
-          alert("Please upload an image")
-        }
+      if(this.instructor == 'null'){
+        alert("Please choose an instructor.")
+      }
+      else if(this.formula == ''){
+        alert("Please write something.")
+      }
+      else if(this.img == null){
+        alert("Please upload an image")
+      }
+      else if(this.MinersID == ''){
+        alert("Please write your Miners Username.")
+      }
+      else if(this.option == ''){
+        alert("Please select a class.")
       }
       else{
-        alert("Please write something.")
+        localStorage.setItem("ID", this.MinersID);
+        localStorage.setItem("class", this.option);
+        localStorage.setItem("instructor", this.instructor);
+        this.sendImageToScript();
       }
     },
     sendImageToScript(){
       // Posts info to localhost on port 5000
       // Sanity check can be seen if navigated to that url
-      axios.post('http://129.108.156.19:5000/', {
+      axios.post('http://192.168.0.3:5000/', {
         id: this.MinersID,
-        imageID: this.ID,
+        imageID: this.copyID,
         class: this.option,
         input_text: this.formula,
         image: this.img

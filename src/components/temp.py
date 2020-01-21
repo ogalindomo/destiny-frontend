@@ -2,9 +2,8 @@
 import sys
 
 def process_image():
-    print(sys.argv[0])
-    # print(sys.argv[1])
-    1 == 1
+    print(sys.argv[1])
+
 
 
 
