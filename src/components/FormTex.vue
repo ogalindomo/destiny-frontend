@@ -1,14 +1,14 @@
 <template>
   <div class="main-menu">
     <div>
-      <b-row class="d-sm-none">
+      <b-row class="d-md-none">
         <div class="head-space-small"></div>
       </b-row>
-      <b-row class="d-none d-sm-block">
+      <b-row class="d-none d-md-block">
         <div class="head-space-large"></div>
       </b-row>
     </div>
-    <div class="d-sm-none small-form-area">
+    <div class="d-md-none small-form-area">
       <div class="inner-form-area">
         <b-row>
           <div class="row1-space-small"></div>
@@ -37,14 +37,14 @@
           </b-col>
         </b-row>
         <b-row>
-          <div class="row1-space-small"></div>
+          <div class="row2-space-small"></div>
         </b-row>
         <b-row>
           <b-col>Sample:</b-col>
         </b-row>
         <b-row>
           <b-col>
-            <textarea class= "sample-field id-overflow" style="resize: none;" v-model="ID" cols="12" rows="1" disabled></textarea>
+            <textarea class= "sample-field id-overflow" v-model="ID" rows="1" disabled></textarea>
           </b-col>
         </b-row>
         <b-row>
@@ -63,6 +63,9 @@
           </b-col>
         </b-row>
         <b-row>
+          <div class="row3-space-small"></div>
+        </b-row>
+        <b-row>
           <b-col>Instructor:</b-col>
         </b-row>
         <b-row>
@@ -73,13 +76,13 @@
           </b-col>
         </b-row>
         <b-row>
-          <div class="row2-space-small"></div>
+          <div class="row3-space-small"></div>
         </b-row>
         <b-row>
           <b-col>Miners Username:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class="id-field id-overflow" v-model="MinersID" style="resize: none;" cols="12" rows="1"></textarea></b-col>
+          <b-col><textarea class="id-field id-overflow" v-model="MinersID" rows="1"></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row2-space-small"></div>
@@ -124,7 +127,7 @@
       </div>
     </div>
 <!-- Division between styles of screen -->
-    <div class="form-area d-none d-sm-block">
+    <div class="form-area d-none d-md-block">
       <div class="inner-form-area">
         <b-row>
           <div class="row2-space-small"></div>
@@ -155,27 +158,27 @@
           <div class="row2-space-small"></div>
         </b-row>
         <b-row>
-          <b-col class="text-center">Sample:</b-col>
-          <b-col class="text-center">Class:</b-col>
-          <b-col class="text-center">Instructor:</b-col>
-          <b-col class="text-center">Miners Username:</b-col>
+          <b-col class="text-center zero-margin">Sample:</b-col>
+          <b-col class="text-center zero-margin">Class:</b-col>
+          <b-col class="text-center zero-margin">Instructor:</b-col>
+          <b-col class="text-center zero-margin">Miners Username:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class="sample-field id-overflow user-selection" v-model="ID" style="resize: none;" cols="12" rows="1" disabled></textarea></b-col>
-          <b-col align-self="center">
+          <b-col class="zero-margin"><textarea class="sample-field id-overflow user-selection" v-model="ID" rows="1" disabled></textarea></b-col>
+          <b-col class="zero-margin">
             <select v-model="option" class="user-selection">
               <option>Matrix Algebra</option>
               <option>Calculus III</option>
               <option>Foundations of Logic</option>
             </select>
           </b-col>
-          <b-col align-self="center">
+          <b-col class = "zero-margin">
             <select v-model="instructor" class="user-selection">
               <option>Dr. Urenda</option>
             </select>
           </b-col>
-          <b-col>
-            <textarea class="id-field id-overflow user-selection" v-model="MinersID" style="resize: none;" cols="12" rows="1"></textarea>
+          <b-col class="zero-margin">
+            <textarea class="id-field id-overflow user-selection" v-model="MinersID" rows="1"></textarea>
           </b-col>
         </b-row>  
         <b-row>
@@ -477,34 +480,23 @@ h1,h2 {
 .row3-space-small{
   margin-top: 2%;
 }
-@media (max-width: 952px) and (min-width: 900px){
+
+.zero-margin{
+  margin: 0px;
+}
+@media (max-width: 1169px) and (min-width: 953px){
   .user-selection{
-    width: 120px;
+    width: 110px;
   }
 }
-@media (max-width: 899px) and (min-width: 765px){
+@media (max-width: 952px) and (min-width: 900px){
   .user-selection{
     width: 100px;
   }
 }
-@media (max-width: 764px) and (min-width: 706px){
+@media (max-width: 899px) and (min-width: 771px){
   .user-selection{
-    width: 90px;
-  }
-}
-@media (max-width: 705px) and (min-width: 651px){
-  .user-selection{
-    width: 80px;
-  }
-}
-@media (max-width: 650px) and (min-width: 589px){
-  .user-selection{
-    width: 70px;
-  }
-}
-@media (max-width: 588px) and (min-width: 574px){
-  .user-selection{
-    width: 65px;
+    width: 100px;
   }
 }
 </style>
