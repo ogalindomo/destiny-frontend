@@ -333,7 +333,7 @@ export default {
     sendImageToScript(){
       // Posts info to localhost on port 5000
       // Sanity check can be seen if navigated to that url
-      axios.post('http://192.168.0.3:5000/', {
+      axios.post('http://129.108.156.19:8080/', {
         id: this.MinersID,
         imageID: this.copyID,
         class: this.option,
