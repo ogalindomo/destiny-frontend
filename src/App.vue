@@ -47,6 +47,9 @@ export default {
   /*orange*/
   /*background-color: rgb(240, 139, 62);*/
 }
+.confirmation-modal{
+  z-index: -1;
+}
 .small-image-area{
   padding-top: 20px;
   height: 150px;

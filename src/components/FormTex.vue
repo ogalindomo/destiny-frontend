@@ -15,7 +15,8 @@
         </b-row>
         <b-row>
           <b-col class="text-center"> 
-              <picture-input 
+              <picture-input
+                v-if="showImageArea"
                 style="width: 100%"
                 ref="pictureInput" 
                 @change="onChange" 
@@ -82,7 +83,7 @@
           <b-col>Miners Username:</b-col>
         </b-row>
         <b-row>
-          <b-col><textarea class="id-field id-overflow" v-model="MinersID" rows="1"></textarea></b-col>
+          <b-col><textarea class="id-field text-center id-overflow" v-model="MinersID" rows="1"></textarea></b-col>
         </b-row>
         <b-row>
           <div class="row2-space-small"></div>
@@ -118,6 +119,26 @@
             </div>
           </b-col>
         </b-row>
+        <div>
+          <b-modal class="confirmation-modal" id="bv-modal-confirmation" data-backdrop="true" hide-footer no-close-on-esc no-close-on-backdrop hide-header-close>
+            <template v-slot:modal-title>
+              Please Confirm Your Submission
+            </template>
+            <div class="d-block text-center">
+              <h6>Your Submission Text Is: </h6>
+              <vue-mathjax :formula="formula"></vue-mathjax>
+              <img class="modal-container" v-if="this.img" :src="`${this.img}`" align="middle" height="auto" width="auto"/>
+            </div>
+            <b-row>
+              <b-col>
+                <b-button variant="outline-dark" class="mt-3" block @click="confirmedSubmission">Confirm</b-button>
+              </b-col>
+              <b-col>
+                <b-button variant="danger" class="mt-3" block @click="canceledSubmission">Cancel</b-button>
+              </b-col>
+            </b-row>
+          </b-modal>
+        </div>
         <b-row>
           <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="submissionClicked">Submit</b-button></b-col>
         </b-row>
@@ -133,8 +154,9 @@
           <div class="row2-space-small"></div>
         </b-row>
         <b-row>
-          <b-col class="photo-area">
+          <b-col class="photo-area" id="imgInput">
                 <picture-input 
+                  v-if="showImageArea"
                   ref="pictureInput" 
                   @change="onChange" 
                   width="720" 
@@ -178,7 +200,7 @@
             </select>
           </b-col>
           <b-col class="zero-margin">
-            <textarea class="id-field id-overflow user-selection" v-model="MinersID" rows="1"></textarea>
+            <textarea class="id-field text-center id-overflow user-selection" v-model="MinersID" rows="1"></textarea>
           </b-col>
         </b-row>  
         <b-row>
@@ -215,6 +237,26 @@
             </div>
           </b-col>
         </b-row>
+        <div>
+          <b-modal class="confirmation-modal" id="bv-modal-confirmation" data-backdrop="true" hide-footer no-close-on-esc no-close-on-backdrop hide-header-close>
+            <template v-slot:modal-title>
+              Please Confirm Your Submission
+            </template>
+            <div class="d-block text-center">
+              <h6>Your Submission Text Is: </h6>
+              <vue-mathjax :formula="formula"></vue-mathjax>
+              <img class="modal-container" v-if="this.img" :src="`${this.img}`" align="middle" height="auto" width="auto"/>
+            </div>
+            <b-row>
+              <b-col>
+                <b-button variant="outline-dark" class="mt-3" block @click="confirmedSubmission">Confirm</b-button>
+              </b-col>
+              <b-col>
+                <b-button variant="danger" class="mt-3" block @click="canceledSubmission">Cancel</b-button>
+              </b-col>
+            </b-row>
+          </b-modal>
+        </div>
         <b-row>
           <b-col><b-button block pill variant="dark" style="font-size: var(--fontSize); margin-top: 2.5%;" @click="submissionClicked">Submit</b-button></b-col>
         </b-row>
@@ -226,7 +268,6 @@
         </b-row>
       </div>
     </div>
-
   </div>
 </template>
 
@@ -308,27 +349,37 @@ export default {
           this.instructor = retrievedInstructor;
     },
     submissionClicked(){
-      if(this.instructor == 'null'){
+      if(this.instructor == 'null')
         alert("Please choose an instructor.")
-      }
-      else if(this.formula == ''){
+      else if(this.formula == '')
         alert("Please write something.")
-      }
-      else if(this.img == null){
+      else if(this.img == null)
         alert("Please upload an image")
-      }
-      else if(this.MinersID == ''){
+      else if(this.MinersID == '')
         alert("Please write your Miners Username.")
-      }
-      else if(this.option == ''){
+      else if(this.option == '')
         alert("Please select a class.")
-      }
-      else{
+      else
+        this.toogleImageDisplayFlag();
+    },
+    storeInfo(){
         localStorage.setItem("ID", this.MinersID);
         localStorage.setItem("class", this.option);
         localStorage.setItem("instructor", this.instructor);
-        this.sendImageToScript();
-      }
+    },
+    toogleImageDisplayFlag(){
+      this.showImageArea = false;
+      this.$bvModal.show('bv-modal-confirmation')
+    },
+    confirmedSubmission(){
+      this.showImageArea = true;
+      this.$bvModal.hide('bv-modal-confirmation')
+      this.storeInfo();
+      this.sendImageToScript();
+    },
+    canceledSubmission(){
+      this.showImageArea = true;
+      this.$bvModal.hide('bv-modal-confirmation');
     },
     sendImageToScript(){
       // Posts info to localhost on port 5000
@@ -360,7 +411,9 @@ export default {
       copyID: "",
       uuid: uuid.v1(),
       option: '',
-      instructor: ''
+      instructor: '',
+      showImageArea: true,
+      img: null
     }
   },
 }
@@ -372,15 +425,12 @@ export default {
   background-color: rgb(18,41,79);
   color: rgb(240, 139, 62);
 }
-
 .btn-dark:hover{
   background-color: rgb(18,41,79);
 }
-
 .btn-dark::after{
   background-color: rgb(18,41,79);
 }
-
 .main-menu{
   width: 100%;
   height: 100%;
@@ -434,6 +484,11 @@ h1,h2 {
 .inner-form-area{
   background-color: white;
 }
+.modal-container{
+  height: 350px;
+  width: 350px;
+  object-fit:contain;
+}
 .id-overflow{
   white-space: nowrap;
   overflow: hidden;
@@ -480,7 +535,6 @@ h1,h2 {
 .row3-space-small{
   margin-top: 2%;
 }
-
 .zero-margin{
   margin: 0px;
 }
@@ -499,4 +553,62 @@ h1,h2 {
     width: 100px;
   }
 }
+.modal-backdrop {
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background-color: rgba(0, 0, 0, 0.3);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .modal {
+    background: #FFFFFF;
+    box-shadow: 2px 2px 20px 1px;
+    overflow-x: auto;
+    display: flex;
+    flex-direction: column;
+  }
+
+  .modal-header,
+  .modal-footer {
+    padding: 15px;
+    display: flex;
+  }
+
+  .modal-header {
+    border-bottom: 1px solid #eeeeee;
+    color: #4AAE9B;
+    justify-content: space-between;
+  }
+
+  .modal-footer {
+    border-top: 1px solid #eeeeee;
+    justify-content: flex-end;
+  }
+
+  .modal-body {
+    position: relative;
+    padding: 20px 10px;
+  }
+
+  .btn-close {
+    border: none;
+    font-size: 20px;
+    padding: 20px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #4AAE9B;
+    background: transparent;
+  }
+
+  .btn-green {
+    color: white;
+    background: #4AAE9B;
+    border: 1px solid #4AAE9B;
+    border-radius: 2px;
+  }
 </style>
